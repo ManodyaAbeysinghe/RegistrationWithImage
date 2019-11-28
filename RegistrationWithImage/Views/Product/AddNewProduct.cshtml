@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "AddNewProduct";
+}
+<div class="container">
+    <h2>AddNewProduct</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form id="AddNewProduct" method="post" enctype="multipart/form-data" onsubmit="return AjaxPost(this)">
+                <label>Title</label><br />
+                <input id="ProductName" name="ProductName" class="form-control" placeholder="Product Name" />
+
+                <label>Price</label><br />
+                <input id="Price" name="ProductName" class="form-control" placeholder="Product Price" />
+
+
+                <label>Title</label><br />
+                <input id="ImageUpload" name="ImageUpload" class="form-control" type="file"/>
+
+                <button class="btn btn-danger">Add</button>
+            </form>
+            </div>
+    </div>
+
+</div>
+
+<script>
+    function AjaxPost(formData) {
+        var ajaxConfig = {
+            type: "post",
+            url: "/Product/SaveData",
+            data: new FormData(formData),
+            success: function (result) {
+                alert(result);
+                window.location.href ="/Product/AddNewProduct"
+            }
+        }
+        if ($(formData).attr('enctype') == "multipart/form-data") {
+            ajaxConfig["contentType"] = false;
+            ajaxConfig["processData"] = false;
+        }
+        $.ajax(ajaxConfig);
+        return false;
+
+</script>
+
+
+
+
