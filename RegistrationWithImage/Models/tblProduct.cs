@@ -11,12 +11,17 @@ namespace RegistrationWithImage.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class tblProduct
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public decimal Price { get; set; }
         public string PicUrl { get; set; }
+
+        public HttpPostedFileBase ImageUpload { get; set; }
+       
+
     }
 }
